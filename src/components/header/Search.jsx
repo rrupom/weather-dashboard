@@ -11,7 +11,7 @@ export default function Search() {
           required
         />
         <button type="submit">
-          <img src={SearchIcon} />
+          <img src={SearchIcon} alt="Search" />
         </button>
       </div>
     </form>
