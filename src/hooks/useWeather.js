@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 const useWeather = () => {
-  const [weatherDate, setWeatherData] = useState({
+  const [weatherData, setWeatherData] = useState({
     location: "",
     climate: "",
     temperature: "",
@@ -35,7 +35,7 @@ const useWeather = () => {
       }
       const data = await response.json();
       const updatedWeatherData = {
-        ...weatherDate,
+        ...weatherData,
         location: data?.name,
         climate: data?.weather[0]?.main,
         temperature: data?.main?.temp,
@@ -63,7 +63,7 @@ const useWeather = () => {
     });
   }, []);
 
-  return { weatherDate, error, loading };
+  return { weatherData, error, loading };
 };
 
 export default useWeather;
