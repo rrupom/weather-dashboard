@@ -27,7 +27,11 @@ const useWeather = () => {
 
   const fetchWeatherData = async (latitude, longitude) => {
     try {
-      setLoading({ state: true, message: "Fetching weather data..." });
+      setLoading({
+        ...loading,
+        state: true,
+        message: "Fetching weather data...",
+      });
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
           import.meta.env.VITE_WEATHER_API_KEY
@@ -56,12 +60,12 @@ const useWeather = () => {
     } catch (error) {
       setError(error);
     } finally {
-      setLoading({ state: false, message: "" });
+      setLoading({...loading, state: false, message: "" });
     }
   };
 
   useEffect(() => {
-    setLoading({ state: true, message: "Finding location..." });
+    setLoading({...loading, state: true, message: "Finding location..." });
     if (latitude && longitude) {
       fetchWeatherData(latitude, longitude);
     } else {
